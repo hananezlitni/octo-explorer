@@ -1,5 +1,4 @@
 import React from "react";
-import Search from "./components/Search";
 
 function App() {
   return (
@@ -7,7 +6,6 @@ function App() {
       <header className="App-header">
         <h1>SearchGit</h1>
       </header>
-      <Search />
     </div>
   );
 }
