@@ -2,10 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import Input from "./components/Input/Input";
 import Button from "./components/Button/Button";
 
+import TabsComponent from "./components/Tabs/Tabs";
+
 const App = () => {
   const [searchValue, setSearchValue] = useState(null);
   const [usersList, setUsersList] = useState(null);
   const [reposList, setReposList] = useState(null);
+  const [resultsFetched, setResultsFetched] = useState(false);
   const inputRef = useRef(null);
 
   const submitHandler = (e) => {
@@ -22,6 +25,15 @@ const App = () => {
       .then((data) => {
         setUsersList(data);
       });
+
+    let repos = await fetch(
+      `https://api.github.com/search/repositories?q=${searchValue}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setReposList(data);
+        setResultsFetched(true);
+      });
   }
 
   async function fetchRepos() {
@@ -37,7 +49,7 @@ const App = () => {
   useEffect(() => {
     if (searchValue) {
       fetchUsers();
-      fetchRepos();
+      //fetchRepos();
     }
   }, [searchValue]);
 
@@ -51,21 +63,27 @@ const App = () => {
           <Input placeholder="Search Git..." forwardedRef={inputRef} />
           <Button label="Search" color="primary" type="submit" />
         </form>
-        <h2>
-          Users <small>{usersList?.total_count}</small>
-        </h2>
-        {usersList?.items.map((user) => (
-          <p key={user.id}>
-            <img src={user.avatar_url} /> <br /> {user.login}
-          </p>
-        ))}
-
-        <h2>
-          Repos <small>{reposList?.total_count}</small>
-        </h2>
-        {reposList?.items.map((repo) => (
-          <p key={repo.id}>{repo.name}</p>
-        ))}
+        <br />
+        <br />
+        <br />
+        {resultsFetched ? (
+          <TabsComponent
+            tabs={[
+              {
+                label: `Users ${`(${usersList.total_count})`}`,
+                value: "users",
+              },
+              {
+                title: `Repositories ${`(${reposList.total_count})`}`,
+                value: "repositories",
+              },
+            ]}
+            users={usersList}
+            repos={reposList}
+          />
+        ) : (
+          ""
+        )}
       </main>
       <footer>
         <br />
@@ -78,3 +96,5 @@ const App = () => {
 };
 
 export default App;
+
+/*Users ${usersList ? `(${usersList.total_count})` : ""}`*/
