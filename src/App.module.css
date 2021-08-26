@@ -2,4 +2,8 @@
     display: flex;
     justify-content: center;
 }
+
+button[role="tab"] span {
+    align-items: flex-start;
+}
   

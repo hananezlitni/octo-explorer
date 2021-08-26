@@ -1,7 +1,15 @@
+:root {
+  /* Nord color palette: https://www.nordtheme.com/ */
+  --background-color: #ECEFF4;
+  --font-color: #2E3440;
+  --gray-color: #4C566A;
+  --accent-color: #81A1C1;
+}
 html {
   box-sizing: border-box; /* https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f1f1f1;
+  background-color: var(--background-color);
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: var(--font-color);
 }
 * {
   margin: 0;
@@ -34,6 +42,7 @@ footer {
   display: flex;
   align-items: flex-end;
   padding-bottom: 1em;
+  color: var(--gray-color);
 }
 img {
   width: 30px;

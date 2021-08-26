@@ -93,28 +93,30 @@ const App = () => {
         <br />
         <br />
         <br />
-        {resultsFetched ? (
+        {true ? (
           <>
-            <AppBar position="static">
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                aria-label="Tabs to categorize search results"
-              >
-                <Tab
-                  label={`Users ${
-                    usersList ? `(${usersList.total_count})` : ""
-                  }`}
-                  {...a11yProps(0)}
-                />
-                <Tab
-                  label={`Repositories ${
-                    reposList ? `(${reposList.total_count})` : ""
-                  }`}
-                  {...a11yProps(1)}
-                />
-              </Tabs>
-            </AppBar>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="Tabs to categorize search results"
+              className={styles.tabs}
+              TabIndicatorProps={{ style: { background: "#81A1C1" } }}
+            >
+              <Tab
+                label={`Users ${
+                  usersList ? `(${usersList.total_count})` : "(0)"
+                }`}
+                className={styles.tab}
+                {...a11yProps(0)}
+              />
+              <Tab
+                label={`Repositories ${
+                  reposList ? `(${reposList.total_count})` : "(0)"
+                }`}
+                className={styles.tab}
+                {...a11yProps(1)}
+              />
+            </Tabs>
             <TabPanel value={value} index={0}>
               {usersList?.items.map((user) => (
                 <p key={user.id}>
