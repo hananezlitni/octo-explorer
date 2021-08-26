@@ -30,13 +30,12 @@ main {
   padding-left: 2em;
 }
 footer {
-  height: 5vh;
+  height: 10vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 1em;
 }
 img {
   width: 30px;
   height: 30px;
-}
-.form {
-  display: flex;
-  justify-content: center;
 }

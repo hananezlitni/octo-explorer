@@ -2,7 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import Input from "./components/Input/Input";
 import Button from "./components/Button/Button";
 
-import TabsComponent from "./components/Tabs/Tabs";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Box from "@material-ui/core/Box";
+
+import styles from "./App.module.css";
 
 const App = () => {
   const [searchValue, setSearchValue] = useState(null);
@@ -17,12 +22,13 @@ const App = () => {
     e.preventDefault();
   };
 
-  async function fetchUsers() {
+  async function fetchResults() {
     let users = await fetch(
       `https://api.github.com/search/users?q=${searchValue}`
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log({ data });
         setUsersList(data);
       });
 
@@ -31,35 +37,56 @@ const App = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log({ data });
         setReposList(data);
         setResultsFetched(true);
       });
   }
 
-  async function fetchRepos() {
-    let repos = await fetch(
-      `https://api.github.com/search/repositories?q=${searchValue}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setReposList(data);
-      });
-  }
-
   useEffect(() => {
     if (searchValue) {
-      fetchUsers();
-      //fetchRepos();
+      fetchResults();
     }
   }, [searchValue]);
 
+  /* TABS */
+  const [value, setValue] = React.useState(0);
+
+  const TabPanel = (props) => {
+    const { children, value, index, ...other } = props;
+
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && <Box p={3}>{children}</Box>}
+      </div>
+    );
+  };
+
+  const a11yProps = (index) => {
+    return {
+      id: `simple-tab-${index}`,
+      "aria-controls": `simple-tabpanel-${index}`,
+    };
+  };
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  //end tabs
+
   return (
     <>
-      <header className="App-header">
+      <header>
         <h1>SearchGit</h1>
       </header>
       <main>
-        <form className="form" onSubmit={submitHandler}>
+        <form className={styles.form} onSubmit={submitHandler}>
           <Input placeholder="Search Git..." forwardedRef={inputRef} />
           <Button label="Search" color="primary" type="submit" />
         </form>
@@ -67,28 +94,45 @@ const App = () => {
         <br />
         <br />
         {resultsFetched ? (
-          <TabsComponent
-            tabs={[
-              {
-                label: `Users ${`(${usersList.total_count})`}`,
-                value: "users",
-              },
-              {
-                title: `Repositories ${`(${reposList.total_count})`}`,
-                value: "repositories",
-              },
-            ]}
-            users={usersList}
-            repos={reposList}
-          />
+          <>
+            <AppBar position="static">
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="Tabs to categorize search results"
+              >
+                <Tab
+                  label={`Users ${
+                    usersList ? `(${usersList.total_count})` : ""
+                  }`}
+                  {...a11yProps(0)}
+                />
+                <Tab
+                  label={`Repositories ${
+                    reposList ? `(${reposList.total_count})` : ""
+                  }`}
+                  {...a11yProps(1)}
+                />
+              </Tabs>
+            </AppBar>
+            <TabPanel value={value} index={0}>
+              {usersList?.items.map((user) => (
+                <p key={user.id}>
+                  <img src={user.avatar_url} /> <br /> {user.login}
+                </p>
+              ))}
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              {reposList?.items.map((repo) => (
+                <p key={repo.id}>{repo.name}</p>
+              ))}
+            </TabPanel>
+          </>
         ) : (
           ""
         )}
       </main>
       <footer>
-        <br />
-        <br />
-        <br />
         <small>Made by Hanane Zlitni</small>
       </footer>
     </>
