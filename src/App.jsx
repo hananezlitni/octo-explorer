@@ -54,7 +54,7 @@ const App = () => {
   }, [searchValue]);
 
   return (
-    <div className="App">
+    <>
       <header className="App-header">
         <h1>SearchGit</h1>
       </header>
@@ -91,7 +91,7 @@ const App = () => {
         <br />
         <small>Made by Hanane Zlitni</small>
       </footer>
-    </div>
+    </>
   );
 };
 
