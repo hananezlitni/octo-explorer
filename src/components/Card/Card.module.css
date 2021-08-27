@@ -1,21 +1,90 @@
 .card {
-    height: 350px;
-    margin: 0.5em;
-    padding: 2em 1em;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 1em;
-
+    gap: 0.5em;
+    margin: 0.5em;
+    padding: 2em 1em;
     border-radius: 30px;
     background-color: #f4f4f4;
     box-shadow:  20px 20px 60px #bebebe,
                 -20px -20px 60px #ffffff;
+    font-size: calc(10px + 0.5vmin); /* FLUID TYPOGRAPHY */
+}
+.user {
+    width: 330px;
+    min-height: 350px;
+    align-items: center;
+    justify-content: center;
+}
+.repo {
+    min-height: 250px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.username {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
+    margin: 0.75em 0 0.25em 0;
 }
 .userAvatar {
+    display: block;
     width: 120px;
     height: 120px;    
     border-radius: 50%;
+}
+.userBio, .repoDescription {
+    color: var(--gray-color);
+    margin-bottom: 1em;
+}
+.userBio {
+    text-align: center;
+}
+.repoDescription {
+    text-align: left;
+}
+.repoCardFooter {
+    display: flex;
+    gap: 1em;
+    margin-top: auto;
+    width: 100%;
+}
+.repoStars, .repoLanguage {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+}
+.repoStars, .repoForks {
+    color: var(--gray-color);
+}
+.repoLanguage {
+    color: var(--gray-color);
+    margin-left: auto;
+    margin-right: 0.5em;
+}
+.repoStars > svg, .repoForks > svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--gray-color);
+    vertical-align: middle;
+    margin-right: 0.25em;
+}
+.githubLink {
+    text-decoration: none;
+    color: var(--font-color);
+    border-radius: 0.25em;
+    padding: 0.5em;
+    gap: 0.5em;
+}
+.githubLink:hover {
+    text-decoration: underline;
+}
+.githubLink > svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--font-color);
+    vertical-align: middle;
+    margin-right: 0.5em;
 }

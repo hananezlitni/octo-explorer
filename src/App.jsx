@@ -144,8 +144,6 @@ const App = () => {
                   key={user.id}
                   username={user.login}
                   avatar={user.avatar_url}
-                  followersUrl=""
-                  //followersUrl={user.followers_url} //try users API - rate limit
                 />
               ))}
               <div className={styles.pagination}>
