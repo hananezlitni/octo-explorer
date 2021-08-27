@@ -4,8 +4,11 @@
     align-items: center;
     margin-bottom: 2em;
 }
-
 button[role="tab"] span {
     align-items: flex-start;
+}
+.tabPanel > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 0.5fr));
 }
   

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Input from "./components/Input/Input";
 import Button from "./components/Button/Button";
+import UserCard from "./components/Card/UserCard";
+import RepoCard from "./components/Card/RepoCard";
 
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
@@ -90,7 +92,7 @@ const App = () => {
           <Input placeholder="Search Git..." forwardedRef={inputRef} />
           <Button label="Search" color="primary" type="submit" />
         </form>
-        {true ? (
+        {resultsFetched ? (
           <>
             <Tabs
               value={value}
@@ -114,16 +116,25 @@ const App = () => {
                 {...a11yProps(1)}
               />
             </Tabs>
-            <TabPanel value={value} index={0}>
+            <TabPanel className={styles.tabPanel} value={value} index={0}>
               {usersList?.items.map((user) => (
-                <p key={user.id}>
-                  <img src={user.avatar_url} /> <br /> {user.login}
-                </p>
+                <UserCard
+                  key={user.id}
+                  username={user.login}
+                  avatar={user.avatar_url}
+                  followers={0}
+                />
               ))}
             </TabPanel>
-            <TabPanel value={value} index={1}>
+            <TabPanel className={styles.tabPanel} value={value} index={1}>
               {reposList?.items.map((repo) => (
-                <p key={repo.id}>{repo.name}</p>
+                <RepoCard
+                  key={repo.id}
+                  name={repo.name}
+                  owner={repo.owner.login}
+                  stars={repo.stargazers_count}
+                  language={repo.language}
+                />
               ))}
             </TabPanel>
           </>

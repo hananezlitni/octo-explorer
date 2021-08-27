@@ -5,6 +5,7 @@
   --gray-color: rgba(46, 52, 64, 0.7);
   --accent-color: #8FBCBB;
   --frost: #81A1C1;
+  --snow-storm: #D8DEE9;
 }
 html {
   box-sizing: border-box; /* https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
