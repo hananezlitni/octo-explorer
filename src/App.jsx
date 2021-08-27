@@ -90,9 +90,6 @@ const App = () => {
           <Input placeholder="Search Git..." forwardedRef={inputRef} />
           <Button label="Search" color="primary" type="submit" />
         </form>
-        <br />
-        <br />
-        <br />
         {true ? (
           <>
             <Tabs

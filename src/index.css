@@ -29,17 +29,17 @@ html {
   gap: 1em;
 }
 header {
-  height: 10vh;
+  height: 20vh;
   display: flex;
   align-items: center;
 }
 main {
-  height: 75vh;
+  height: 70vh;
   width: 100vw;
   padding-left: 2em;
 }
 footer {
-  height: 10vh;
+  height: 5vh;
   display: flex;
   align-items: flex-end;
   padding-bottom: 1em;
