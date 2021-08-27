@@ -4,7 +4,6 @@ import Button from "./components/Button/Button";
 import UserCard from "./components/Card/UserCard";
 import RepoCard from "./components/Card/RepoCard";
 
-import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
@@ -16,6 +15,8 @@ const App = () => {
   const [usersList, setUsersList] = useState(null);
   const [reposList, setReposList] = useState(null);
   const [resultsFetched, setResultsFetched] = useState(false);
+  const [userUrls, setUserUrls] = useState(null);
+  const [repoUrls, setRepoUrls] = useState(null);
   const inputRef = useRef(null);
 
   const submitHandler = (e) => {
@@ -24,22 +25,38 @@ const App = () => {
     e.preventDefault();
   };
 
-  async function fetchResults() {
-    let users = await fetch(
-      `https://api.github.com/search/users?q=${searchValue}`
-    )
-      .then((res) => res.json())
+  async function fetchUsers(url) {
+    let users = await fetch(url)
+      .then((res) => {
+        let links = res.headers.get("link").split(",");
+        let urls = links.map((link) => {
+          return {
+            url: link.split(";")[0].replace(">", "").replace("<", ""),
+            title: link.split(";")[1].replace("rel=", "").replaceAll('"', ""),
+          };
+        });
+        setUserUrls(urls);
+        return res.json();
+      })
       .then((data) => {
-        console.log({ data });
         setUsersList(data);
       });
+  }
 
-    let repos = await fetch(
-      `https://api.github.com/search/repositories?q=${searchValue}`
-    )
-      .then((res) => res.json())
+  async function fetchRepos(url) {
+    let repos = await fetch(url)
+      .then((res) => {
+        let links = res.headers.get("link").split(",");
+        let urls = links.map((link) => {
+          return {
+            url: link.split(";")[0].replace(">", "").replace("<", ""),
+            title: link.split(";")[1].replace("rel=", "").replaceAll('"', ""),
+          };
+        });
+        setRepoUrls(urls);
+        return res.json();
+      })
       .then((data) => {
-        console.log({ data });
         setReposList(data);
         setResultsFetched(true);
       });
@@ -47,7 +64,12 @@ const App = () => {
 
   useEffect(() => {
     if (searchValue) {
-      fetchResults();
+      fetchUsers(
+        `https://api.github.com/search/users?q=${searchValue}&page=1&per_page=10`
+      );
+      fetchRepos(
+        `https://api.github.com/search/repositories?q=${searchValue}&page=1&per_page=10`
+      );
     }
   }, [searchValue]);
 
@@ -122,9 +144,18 @@ const App = () => {
                   key={user.id}
                   username={user.login}
                   avatar={user.avatar_url}
-                  followers={0}
+                  followersUrl=""
+                  //followersUrl={user.followers_url} //try users API - rate limit
                 />
               ))}
+              <div className={styles.pagination}>
+                {userUrls &&
+                  userUrls?.map((url) => (
+                    <button onClick={() => fetchUsers(url.url)} key={url.url}>
+                      {url.title}
+                    </button>
+                  ))}
+              </div>
             </TabPanel>
             <TabPanel className={styles.tabPanel} value={value} index={1}>
               {reposList?.items.map((repo) => (
@@ -136,19 +167,22 @@ const App = () => {
                   language={repo.language}
                 />
               ))}
+              <div className={styles.pagination}>
+                {repoUrls &&
+                  repoUrls?.map((url) => (
+                    <button onClick={() => fetchRepos(url.url)} key={url.url}>
+                      {url.title}
+                    </button>
+                  ))}
+              </div>
             </TabPanel>
           </>
         ) : (
           ""
         )}
       </main>
-      <footer>
-        <small>Made by Hanane Zlitni</small>
-      </footer>
     </>
   );
 };
 
 export default App;
-
-/*Users ${usersList ? `(${usersList.total_count})` : ""}`*/
