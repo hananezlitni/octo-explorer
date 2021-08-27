@@ -3,7 +3,8 @@
   --background-color: #ECEFF4;
   --font-color: #2E3440;
   --gray-color: #4C566A;
-  --accent-color: #81A1C1;
+  --accent-color: #8FBCBB;
+  --frost: #81A1C1;
 }
 html {
   box-sizing: border-box; /* https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */

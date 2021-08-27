@@ -100,7 +100,7 @@ const App = () => {
               onChange={handleChange}
               aria-label="Tabs to categorize search results"
               className={styles.tabs}
-              TabIndicatorProps={{ style: { background: "#81A1C1" } }}
+              TabIndicatorProps={{ style: { background: "#8FBCBB" } }}
             >
               <Tab
                 label={`Users ${
