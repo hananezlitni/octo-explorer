@@ -1,8 +1,8 @@
 :root {
   /* Nord color palette: https://www.nordtheme.com/ */
   --background-color: #ECEFF4;
-  --font-color: #2E3440;
-  --gray-color: #4C566A;
+  --font-color: #2e3440;
+  --gray-color: rgba(46, 52, 64, 0.7);
   --accent-color: #8FBCBB;
   --frost: #81A1C1;
 }
