@@ -1,89 +1,96 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    margin: 0.5em;
-    padding: 2em 1.5em;
-    border-radius: 30px;
-    background-color: #f4f4f4;
-    box-shadow:  20px 20px 60px #bebebe,
-                -20px -20px 60px #ffffff;
-    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (2880 - 320))); /* FLUID TYPOGRAPHY */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin: 0.5em;
+  padding: 2em 1.5em;
+  border-radius: 30px;
+  background-color: #f4f4f4;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  /* Fluid typography for the cards */
+  /* https://www.smashingmagazine.com/2016/05/fluid-typography/ */
+  font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (2880 - 320)));
 }
 .cardFooter {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1em;
-    margin-top: auto;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: auto;
+  width: 100%;
 }
+/* User card */
 .user {
-    width: 330px;
-    min-height: 350px;
-    align-items: center;
-    justify-content: center;
-}
-.repo {
-    min-height: 220px;
-    align-items: flex-start;
-    justify-content: flex-start;
+  width: 330px;
+  min-height: 350px;
+  align-items: center;
+  justify-content: center;
 }
 .username {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    margin: 0.75em 0 0.25em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  margin: 0.75em 0 0.25em 0;
 }
 .userAvatar {
-    display: block;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-}
-.userBio, .repoDescription {
-    color: var(--gray-color);
-    margin-bottom: 1em;
+  display: block;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
 }
 .userBio {
-    text-align: center; 
+  text-align: center;
 }
 .userFooterData {
-    color: var(--gray-color);
-    text-align: center;
-    line-height: 1.5;
-    margin: 0 0.25em
+  color: var(--gray-color);
+  text-align: center;
+  line-height: 1.5;
+  margin: 0 0.25em;
+}
+/* Repo card */
+.repo {
+  min-height: 220px;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .repoDescription {
-    text-align: left;
-    margin: 0.5em 0;
+  text-align: left;
+  margin: 0.5em 0;
 }
-.repoStars, .repoLanguage {
-    display: flex;
-    align-items: center;
-    gap: 0.25em;
+.repoStars,
+.repoForks,
+.repoLanguage {
+  color: var(--gray-color);
 }
-.repoStars, .repoForks {
-    color: var(--gray-color);
+.repoStars,
+.repoLanguage {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
 }
 .repoLanguage {
-    color: var(--gray-color);
-    margin-left: auto;
-    margin-right: 0.5em;
+  margin-left: auto;
+  margin-right: 0.5em;
 }
-.repoStars > svg, .repoForks > svg {
-    width: 18px;
-    height: 18px;
-    fill: var(--gray-color);
-    vertical-align: middle;
-    margin-right: 0.25em;
+.repoStars > svg,
+.repoForks > svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--gray-color);
+  vertical-align: middle;
+  margin-right: 0.25em;
 }
 .githubLink {
-    text-decoration: none;
-    color: var(--font-color);
+  text-decoration: none;
+  color: var(--font-color);
 }
 .githubLink:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+.userBio,
+.repoDescription {
+  color: var(--gray-color);
+  margin-bottom: 1em;
 }

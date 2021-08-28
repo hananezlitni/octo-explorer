@@ -1,11 +1,11 @@
 :root {
   /* Nord color palette: https://www.nordtheme.com/ */
-  --background-color: #ECEFF4;
+  --background-color: #eceff4;
   --font-color: #2e3440;
   --gray-color: rgba(46, 52, 64, 0.7);
-  --accent-color: #8FBCBB;
-  --frost: #81A1C1;
-  --snow-storm: #D8DEE9;
+  --accent-color: #81a1c1;
+  --snow-storm: #d8dee9;
+  --text-warning: #cf0000;
 }
 html {
   box-sizing: border-box; /* https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
@@ -20,7 +20,7 @@ html {
 }
 *:after,
 *:before {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 #root {
   display: flex;

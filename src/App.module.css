@@ -1,36 +1,73 @@
 .form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
 }
 button[role="tab"] span {
-    align-items: flex-start;
+  align-items: flex-start;
 }
 .tabPanel > div {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 0.5fr));
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 0.5fr));
+  justify-content: center;
 }
 .pagination {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1.5em 0;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5em 0;
 }
 .pagination > button {
-    margin: 0 0.25em;
-    padding: 0.5em;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+  margin: 0 0.25em;
+  padding: 0.5em;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 .pagination > button > svg {
-    width: 25px;
-    height: 25px;
-    fill: var(--frost);
-    stroke-width: 1px;
+  width: 25px;
+  height: 25px;
+  fill: var(--accent-color);
+  stroke-width: 1px;
 }
-  
-  
+.warning {
+  color: var(--text-warning);
+  text-align: center;
+}
+/* GitHub Corner*/
+.octoSvg {
+  fill: var(--accent-color);
+  color: #fff;
+  position: absolute;
+  top: 0;
+  border: 0;
+  right: 0;
+}
+.githubCorner:hover .octoArm {
+  animation: octocat-wave 560ms ease-in-out;
+  transform-origin: 130px 106px;
+}
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+@media (max-width: 500px) {
+  .githubCorner:hover .octoArm {
+    animation: none;
+  }
+  .githubCorner .octoArm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}

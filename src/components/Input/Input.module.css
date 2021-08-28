@@ -1,17 +1,17 @@
 .input {
-    height: 40px;
-    width: 300px;
-    font-size: 1em;
-    color: var(--font-color);
-    background-color: transparent;
-    margin: 0 1em;
-    padding: 0 1em;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 2px solid var(--gray-color);
+  height: 40px;
+  width: 300px;
+  font-size: 1em;
+  color: var(--font-color);
+  background-color: transparent;
+  margin: 0 1em;
+  padding: 0 1em;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid var(--gray-color);
 }
 .input:focus {
-    border-bottom: 2px solid var(--accent-color);
-    outline: none;
+  border-bottom: 2px solid var(--accent-color);
+  outline: none;
 }
