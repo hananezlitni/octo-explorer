@@ -179,7 +179,7 @@ const App = () => {
       <header>
         {/* GitHub corner */}
         <a
-          href="https://github.com/hananezlitni/search-git"
+          href="https://github.com/hananezlitni/octo-explorer"
           target="_blank"
           className={styles.githubCorner}
           aria-label="View source on GitHub"
@@ -206,7 +206,7 @@ const App = () => {
         </a>
         {/* End of GitHub corner */}
 
-        <h1>SearchGit</h1>
+        <h1>OctoExplorer</h1>
       </header>
       <main>
         {/* Form */}
