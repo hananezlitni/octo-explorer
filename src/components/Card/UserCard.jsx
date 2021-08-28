@@ -1,3 +1,7 @@
+/*
+  UserCard.jsx calls the User API to get the user's info and renders it
+  in a card.
+*/
 import React, { useState, useEffect } from "react";
 import styles from "./Card.module.css";
 

@@ -1,3 +1,7 @@
+/*
+  RepoCard.jsx calls the Repos API to get the repo's info and renders it
+  in a card.
+*/
 import React, { useState, useEffect } from "react";
 import styles from "./Card.module.css";
 

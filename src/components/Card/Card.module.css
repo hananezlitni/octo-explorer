@@ -83,11 +83,7 @@
   margin-right: 0.25em;
 }
 .githubLink {
-  text-decoration: none;
   color: var(--font-color);
-}
-.githubLink:hover {
-  text-decoration: underline;
 }
 .userBio,
 .repoDescription {

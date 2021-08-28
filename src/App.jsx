@@ -1,3 +1,7 @@
+/*
+The App.jsx file is the parent component of the application. 
+It executes the Search APIs and displays the search results by calling the UserCard and RepoCard components.
+*/
 import React, { useEffect, useRef, useState } from "react";
 import Input from "./components/Input/Input";
 import Button from "./components/Button/Button";
