@@ -1,6 +1,8 @@
 # OctoExplorer
 
-A react app that utilizes GitHub's public Search, User and Repository APIs to display information about the user's search query. 
+A react app that utilizes GitHub's public Search, User and Repository APIs to display information about the user's search query.
+
+View live: https://octoexplorer.netlify.app/
 
 ## Technologies 
 
