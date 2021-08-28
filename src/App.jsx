@@ -211,7 +211,7 @@ const App = () => {
       <main>
         {/* Form */}
         <form className={styles.form} onSubmit={submitHandler}>
-          <Input placeholder="Search Git..." forwardedRef={inputRef} />
+          <Input placeholder="Search GitHub..." forwardedRef={inputRef} />
           <Button label="Search" color="primary" type="submit" />
         </form>
         {/* End of form */}
