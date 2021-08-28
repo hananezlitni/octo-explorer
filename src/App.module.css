@@ -10,6 +10,7 @@ button[role="tab"] span {
 .tabPanel > div {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 0.5fr));
+    justify-content: center;
 }
 .pagination {
     grid-column: 1 / -1;

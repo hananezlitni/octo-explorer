@@ -65,10 +65,10 @@ const App = () => {
   useEffect(() => {
     if (searchValue) {
       fetchUsers(
-        `https://api.github.com/search/users?q=${searchValue}&page=1&per_page=10`
+        `https://api.github.com/search/users?q=${searchValue}&page=1&per_page=12`
       );
       fetchRepos(
-        `https://api.github.com/search/repositories?q=${searchValue}&page=1&per_page=10`
+        `https://api.github.com/search/repositories?q=${searchValue}&page=1&per_page=12`
       );
     }
   }, [searchValue]);
