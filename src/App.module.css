@@ -25,7 +25,8 @@ button[role="tab"] span {
     background-color: transparent;
     color: var(--gray-color);
     font-size: 0.9em;
-    border: none;
+    border: 1px solid var(--gray-color);
+    border-radius: 5px;
     cursor: pointer;
 }
   

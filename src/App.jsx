@@ -30,9 +30,36 @@ const App = () => {
       .then((res) => {
         let links = res.headers.get("link").split(",");
         let urls = links.map((link) => {
+          let title = link
+            .split(";")[1]
+            .replace("rel=", "")
+            .replaceAll('"', "");
+
+          let order = 0;
+
+          switch (title) {
+            case " next":
+              title = "Next page";
+              order = 3;
+              break;
+            case " prev":
+              title = "Previous page";
+              order = 2;
+              break;
+            case " first":
+              title = "First page";
+              order = 1;
+              break;
+            case " last":
+              title = "Last page";
+              order = 4;
+              break;
+          }
+
           return {
             url: link.split(";")[0].replace(">", "").replace("<", ""),
-            title: link.split(";")[1].replace("rel=", "").replaceAll('"', ""),
+            title: title,
+            order: order,
           };
         });
         setUserUrls(urls);
@@ -48,11 +75,39 @@ const App = () => {
       .then((res) => {
         let links = res.headers.get("link").split(",");
         let urls = links.map((link) => {
+          let title = link
+            .split(";")[1]
+            .replace("rel=", "")
+            .replaceAll('"', "");
+
+          let order = 0;
+
+          switch (title) {
+            case " next":
+              title = "Next page";
+              order = 3;
+              break;
+            case " prev":
+              title = "Previous page";
+              order = 2;
+              break;
+            case " first":
+              title = "First page";
+              order = 1;
+              break;
+            case " last":
+              title = "Last page";
+              order = 4;
+              break;
+          }
+          console.log({ title });
           return {
             url: link.split(";")[0].replace(">", "").replace("<", ""),
-            title: link.split(";")[1].replace("rel=", "").replaceAll('"', ""),
+            title: title,
+            order: order,
           };
         });
+        console.log({ urls });
         setRepoUrls(urls);
         return res.json();
       })
@@ -148,11 +203,13 @@ const App = () => {
               ))}
               <div className={styles.pagination}>
                 {userUrls &&
-                  userUrls?.map((url) => (
-                    <button onClick={() => fetchUsers(url.url)} key={url.url}>
-                      {url.title}
-                    </button>
-                  ))}
+                  userUrls
+                    ?.sort((a, b) => a.order - b.order)
+                    .map((url) => (
+                      <button onClick={() => fetchUsers(url.url)} key={url.url}>
+                        {url.title}
+                      </button>
+                    ))}
               </div>
             </TabPanel>
             <TabPanel className={styles.tabPanel} value={value} index={1}>
@@ -167,11 +224,13 @@ const App = () => {
               ))}
               <div className={styles.pagination}>
                 {repoUrls &&
-                  repoUrls?.map((url) => (
-                    <button onClick={() => fetchRepos(url.url)} key={url.url}>
-                      {url.title}
-                    </button>
-                  ))}
+                  repoUrls
+                    ?.sort((a, b) => a.order - b.order)
+                    .map((url) => (
+                      <button onClick={() => fetchRepos(url.url)} key={url.url}>
+                        {url.title}
+                      </button>
+                    ))}
               </div>
             </TabPanel>
           </>
