@@ -52,7 +52,9 @@ const UserCard = ({ username, avatar }) => {
       </div>
       <p className={styles.userBio}>{userInfo?.bio}</p>
       <div className={styles.cardFooter}>
-        <p className={styles.followers}>{userInfo?.followers} followers</p>
+        <p className={styles.userFooterData}>{userInfo?.public_repos} <br /> repositories</p>
+        <p className={styles.userFooterData}>{userInfo?.followers} <br /> followers</p>
+        <p className={styles.userFooterData}>{userInfo?.following} <br /> following</p>
       </div>
     </div>
   );

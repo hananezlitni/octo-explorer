@@ -10,6 +10,14 @@
                 -20px -20px 60px #ffffff;
     font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (2880 - 320))); /* FLUID TYPOGRAPHY */
 }
+.cardFooter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-top: auto;
+    width: 100%;
+}
 .user {
     width: 330px;
     min-height: 350px;
@@ -42,17 +50,14 @@
 .userBio {
     text-align: center;
 }
-.followers {
+.userFooterData {
     color: var(--gray-color);
+    text-align: center;
+    line-height: 1.5;
+    margin: 0 0.25em
 }
 .repoDescription {
     text-align: left;
-}
-.cardFooter {
-    display: flex;
-    gap: 1em;
-    margin-top: auto;
-    width: 100%;
 }
 .repoStars, .repoLanguage {
     display: flex;
