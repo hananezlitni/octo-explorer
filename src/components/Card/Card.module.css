@@ -25,7 +25,7 @@
     justify-content: center;
 }
 .repo {
-    min-height: 250px;
+    min-height: 200px;
     align-items: flex-start;
     justify-content: flex-start;
 }
@@ -58,6 +58,7 @@
 }
 .repoDescription {
     text-align: left;
+    margin: 0.5em 0;
 }
 .repoStars, .repoLanguage {
     display: flex;

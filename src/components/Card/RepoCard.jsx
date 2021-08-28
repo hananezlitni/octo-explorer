@@ -20,7 +20,7 @@ const RepoCard = ({ name, owner, stars, language }) => {
   return (
     <div className={`${styles.card} ${styles.repo}`}>
       <h3><a href={`https://github.com/${owner}/${name}`} target="_blank" className={styles.githubLink}>{repoInfo?.name}</a></h3>
-
+      <p>{repoInfo?.owner.login}</p>
       <p className={styles.repoDescription}>{repoInfo?.description}</p>
       <div className={styles.cardFooter}>
         <p className={styles.repoStars}>
