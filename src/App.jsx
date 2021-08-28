@@ -170,10 +170,10 @@ const App = () => {
   useEffect(() => {
     if (searchValue) {
       searchUsers(
-        `https://api.github.com/search/users?q=${searchValue}&page=1&per_page=12`
+        `https://api.github.com/search/users?q=${searchValue}&page=1&per_page=24`
       );
       searchRepos(
-        `https://api.github.com/search/repositories?q=${searchValue}&page=1&per_page=12`
+        `https://api.github.com/search/repositories?q=${searchValue}&page=1&per_page=24`
       );
     }
   }, [searchValue]); // end of useEffect()
