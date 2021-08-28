@@ -36,7 +36,7 @@ const UserCard = ({ username, avatar }) => {
                 {userInfo?.name}
               </a>
             </h3>
-            <small>({username})</small>
+            <p>{username}</p>
           </>
         ) : (
           <h3>
