@@ -3,12 +3,12 @@
     flex-direction: column;
     gap: 0.5em;
     margin: 0.5em;
-    padding: 2em 1em;
+    padding: 2em 1.5em;
     border-radius: 30px;
     background-color: #f4f4f4;
     box-shadow:  20px 20px 60px #bebebe,
                 -20px -20px 60px #ffffff;
-    font-size: calc(10px + 0.5vmin); /* FLUID TYPOGRAPHY */
+    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (2880 - 320))); /* FLUID TYPOGRAPHY */
 }
 .user {
     width: 330px;
@@ -32,7 +32,7 @@
 .userAvatar {
     display: block;
     width: 120px;
-    height: 120px;    
+    height: 120px;
     border-radius: 50%;
 }
 .userBio, .repoDescription {
@@ -42,10 +42,13 @@
 .userBio {
     text-align: center;
 }
+.followers {
+    color: var(--gray-color);
+}
 .repoDescription {
     text-align: left;
 }
-.repoCardFooter {
+.cardFooter {
     display: flex;
     gap: 1em;
     margin-top: auto;
@@ -74,17 +77,7 @@
 .githubLink {
     text-decoration: none;
     color: var(--font-color);
-    border-radius: 0.25em;
-    padding: 0.5em;
-    gap: 0.5em;
 }
 .githubLink:hover {
     text-decoration: underline;
-}
-.githubLink > svg {
-    width: 20px;
-    height: 20px;
-    fill: var(--font-color);
-    vertical-align: middle;
-    margin-right: 0.5em;
 }
